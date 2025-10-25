@@ -27,3 +27,51 @@ button:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
 #top-center-ui{position:fixed;left:0;right:0;top:24px;display:flex;justify-content:center;pointer-events:none}
 #questText{color:var(--silver);font-weight:bold;font-size:20px;text-shadow:0 0 12px rgba(220,230,255,0.35);opacity:0;transition:opacity .6s ease}
 #questText.show{opacity:1}
+/* === Shadow Fall Title Screen Fade Animations === */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Menu container fades upward */
+#menu-inner {
+  animation: fadeInUp 2.5s ease forwards;
+  animation-delay: 4.5s; /* starts after intro text */
+  opacity: 0;
+}
+
+/* Title text subtle glow */
+#title {
+  text-shadow: 0 0 10px rgba(255,255,255,0.15);
+  letter-spacing: 3px;
+}
+
+/* Buttons fade slightly after the title */
+.menu-buttons button {
+  opacity: 0;
+  animation: fadeInUp 1.8s ease forwards;
+  animation-delay: 5.2s;
+}
+
+/* Tip fades in last */
+.tip {
+  opacity: 0;
+  animation: fadeInUp 1.8s ease forwards;
+  animation-delay: 6.2s;
+}
+
+/* Background fades in from black */
+body {
+  animation: fadeBg 2.5s ease forwards;
+}
+
+@keyframes fadeBg {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
