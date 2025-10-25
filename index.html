@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shadowfall — Play</title>
+  <link rel="stylesheet" href="css/launcher.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <div id="app">
+    <div id="bg"></div>
+    <div id="wrap">
+      <h1>SHADOWFALL</h1>
+      <p>Fog &amp; Steel</p>
+      <button id="install" class="btn">Install &amp; Play</button>
+      <div id="progress" class="hidden">
+        <div class="bar"></div>
+        <div class="status" id="status">Preparing…</div>
+      </div>
+    </div>
+
+    <div id="gameOverlay" class="hidden">
+      <iframe id="gameFrame" src="about:blank" allow="autoplay; fullscreen"></iframe>
+      <div id="overlayTop">
+        <button id="back">⟵ Back</button>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="js/launcher.js"></script>
+</body>
+</html>
