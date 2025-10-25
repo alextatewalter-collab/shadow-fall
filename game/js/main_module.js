@@ -143,15 +143,23 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   requestAnimationFrame(bgLoop);
 
-  setTimeout(() => { introText.classList.remove('hidden'); }, 300);
+  // 🎬 Intro fade timing
   setTimeout(() => {
-    introText.classList.add('hidden');
-    document.getElementById('menu').classList.remove('hidden');
-    initAudio();
-  }, 4800);
+    introText.classList.remove('hidden'); // fade in intro
+  }, 300);
 
-  optionsBtn.addEventListener('click', () => document.getElementById('options').classList.remove('hidden'));
-  closeOptions.addEventListener('click', () => document.getElementById('options').classList.add('hidden'));
+  setTimeout(() => {
+    introText.classList.add('fade-out'); // begin fading out
+  }, 4000);
+
+  setTimeout(() => {
+    introText.classList.add('hidden'); // hide after fade
+    menu.classList.remove('hidden');   // fade menu in
+    initAudio();
+  }, 6200);
+
+  optionsBtn.addEventListener('click', () => options.classList.remove('hidden'));
+  closeOptions.addEventListener('click', () => options.classList.add('hidden'));
   volumeSlider.addEventListener('input', (e) => setMusicVolume(parseInt(e.target.value, 10) / 100));
 
   let renderer, scene, camera, player, enemies = [], pendant, keys = {}, last = performance.now();
@@ -159,7 +167,7 @@ window.addEventListener('DOMContentLoaded', () => {
   function initScene() {
     const container = document.getElementById('game-container');
     container.classList.remove('hidden');
-    document.getElementById('game-ui').classList.remove('hidden');
+    gameUI.classList.remove('hidden');
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio || 1);
