@@ -19,8 +19,8 @@ html, body, #root {
   overflow: hidden;
 }
 
-/* === Background Image === */
-#bgCanvas {
+/* === Background Canvas === */
+canvas#bgCanvas {
   position: fixed;
   left: 0;
   top: 0;
@@ -30,17 +30,32 @@ html, body, #root {
   z-index: 0;
 }
 
-body::before {
-  content: "";
+/* === Overlays === */
+.overlay {
   position: fixed;
-  inset: 0;
-  background: url("../assets/title_background.png") no-repeat center center / cover;
-  opacity: 0.32;
-  filter: brightness(0.9) contrast(1.1);
-  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 
-/* Fade-in Intro */
+.overlay .menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+  pointer-events: auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* === Intro Text === */
 #introText {
   position: fixed;
   left: 0;
@@ -54,7 +69,6 @@ body::before {
   text-shadow: 0 0 18px rgba(160, 200, 255, 0.25);
   font-size: 20px;
   letter-spacing: 1px;
-  z-index: 1;
 }
 
 #introText .intro-line {
@@ -67,13 +81,13 @@ body::before {
   animation: fadein 2.4s ease-out forwards;
 }
 
-.fade-out {
-  animation: fadeout 2s ease-in forwards;
-}
-
 @keyframes fadein {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+.fade-out {
+  animation: fadeout 2s ease-out forwards;
 }
 
 @keyframes fadeout {
@@ -81,50 +95,26 @@ body::before {
   to { opacity: 0; }
 }
 
-/* Overlay Menus */
-.overlay {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.overlay.hidden {
-  display: none !important;
-}
-
+/* === Menu === */
 #menu-inner {
-  background: rgba(8, 10, 12, 0.65);
+  background: linear-gradient(180deg, rgba(4,4,6,0.6), rgba(4,4,6,0.35));
   padding: 34px;
   border-radius: 12px;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(2px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
   text-align: center;
   pointer-events: auto;
-  z-index: 2;
 }
 
 #title {
-  font-size: 64px;
+  font-size: 56px;
   margin: 0;
   letter-spacing: 6px;
-  color: var(--silver);
-  text-shadow: 0 0 32px rgba(150, 180, 255, 0.2);
+  color: #e9e6e2;
+  text-shadow: 0 6px 24px rgba(0,70,120,0.09);
 }
 
-.menu-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 18px;
-  pointer-events: auto;
-}
-
+/* === Buttons === */
 button {
   background: #0b0b0c;
   border: 1px solid #222;
@@ -141,13 +131,14 @@ button:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
+/* === Tips === */
 .tip {
   margin-top: 12px;
   opacity: 0.85;
   font-size: 13px;
 }
 
-/* Options Panel */
+/* === Options === */
 #settings-inner {
   background: var(--panel);
   padding: 18px;
@@ -157,21 +148,13 @@ button:hover {
   text-align: center;
 }
 
-#volume {
-  width: 100%;
-}
-
-#volLabel {
-  color: var(--silver);
-}
-
-/* How to Play Overlay */
+/* === How To === */
 #howto.bright {
-  background: radial-gradient(ellipse at center, rgba(200, 220, 240, 0.08) 0%, rgba(0, 0, 0, 0.0) 60%);
+  background: radial-gradient(ellipse at center, rgba(200,220,240,0.08) 0%, rgba(0,0,0,0.0) 60%);
 }
 
 #howto #howto-inner {
-  background: rgba(12, 16, 18, 0.55);
+  background: rgba(12,16,18,0.55);
   padding: 20px 28px;
   border-radius: 10px;
   backdrop-filter: blur(2px);
@@ -186,16 +169,13 @@ button:hover {
 #howto pre {
   font-size: 16px;
   line-height: 1.4;
-  color: var(--silver);
 }
 
 #howto .press-enter {
   opacity: 0.95;
-  margin-top: 12px;
-  color: var(--text);
 }
 
-/* Game UI */
+/* === UI === */
 #game-ui {
   position: fixed;
   left: 12px;
@@ -219,8 +199,6 @@ button:hover {
   background: var(--panel);
   padding: 8px;
   border-radius: 8px;
-  font-size: 13px;
-  color: var(--silver);
 }
 
 #top-center-ui {
@@ -237,7 +215,7 @@ button:hover {
   color: var(--silver);
   font-weight: bold;
   font-size: 20px;
-  text-shadow: 0 0 12px rgba(220, 230, 255, 0.35);
+  text-shadow: 0 0 12px rgba(220,230,255,0.35);
   opacity: 0;
   transition: opacity .6s ease;
 }
