@@ -49,10 +49,12 @@ ESC — Pause / Menu</pre>
     <div id="game-container" class="hidden"></div>
   </div>
 
-  <!-- ✅ Correct Three.js ES module imports -->
+  <!-- ✅ Load Three.js and OrbitControls via CDN -->
   <script type="module">
     import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.module.js";
     import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.159.0/examples/jsm/controls/OrbitControls.js";
+
+    // Load your main JS file after the modules
     import "./js/main_module.js";
   </script>
 </body>
