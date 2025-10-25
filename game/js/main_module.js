@@ -1,4 +1,6 @@
-// Three.js and OrbitControls are already loaded globally via index.html
+// ✅ Use CDN imports for Three.js and OrbitControls
+import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   const bgCanvas = document.getElementById('bgCanvas');
