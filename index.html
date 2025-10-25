@@ -60,12 +60,8 @@ Q — Quest Log (v4)</pre>
     <div id="game-container" class="hidden"></div>
   </div>
 
-  <!-- ✅ Correct CDN imports for Three.js -->
-  <script type="module">
-    import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
-    import { OrbitControls } from "https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js";
-    import "./js/main_module.js";
-  </script>
+  <!-- ✅ Use ES modules directly from CDN -->
+  <script type="module" src="./js/main_module.js"></script>
 </body>
 </html>
 
