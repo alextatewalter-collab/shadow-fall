@@ -52,6 +52,10 @@ Q — Quest Log (v4)</pre>
   </div>
   <div id="game-container" class="hidden"></div>
 </div>
-<script type="module" src="js/main_module.js"></script>
+<script type="module">
+  import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.156.0/build/three.module.js";
+  import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.156.0/examples/jsm/controls/OrbitControls.js";
+  import "./js/main_module.js";
+</script>
 </body>
 </html>
