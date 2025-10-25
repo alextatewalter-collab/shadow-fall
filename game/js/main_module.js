@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const howto = document.getElementById('howto');
   const gameUI = document.getElementById('game-ui');
   const questText = document.getElementById('questText');
+  const introText = document.getElementById('introText');
 
   let audioCtx = null, masterGain = null;
 
@@ -264,20 +265,18 @@ window.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(loop3D);
   }
 
-  document.getElementById('exitBtn').addEventListener('click', () => alert('Close the tab to exit.'));
-  document.getElementById('startBtn').addEventListener('click', () => {
-    document.getElementById('menu').classList.add('hidden');
-    document.getElementById('howto').classList.remove('hidden');
+  exitBtn.addEventListener('click', () => alert('Close the tab to exit.'));
+  startBtn.addEventListener('click', () => {
+    menu.classList.add('hidden');
+    howto.classList.remove('hidden');
   });
   window.addEventListener('keydown', (ev) => {
-    if (document.getElementById('howto').classList.contains('hidden')) return;
+    if (howto.classList.contains('hidden')) return;
     if (ev.key === 'Enter') {
-      document.getElementById('howto').classList.add('hidden');
+      howto.classList.add('hidden');
       startGame();
     }
   });
-  document.getElementById('optionsBtn').addEventListener('click', () => document.getElementById('options').classList.remove('hidden'));
-  document.getElementById('closeOptions').addEventListener('click', () => document.getElementById('options').classList.add('hidden'));
 
   // Click to unlock audio
   window.addEventListener('pointerdown', function onFirst() {
