@@ -4,9 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Shadowfall</title>
-  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Correct favicon path -->
   <link rel="icon" href="../favicon.ico" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
   <div id="root">
     <canvas id="bgCanvas"></canvas>
@@ -18,7 +23,7 @@
     <div id="menu" class="overlay hidden">
       <div id="menu-inner">
         <h1 id="title">SHADOW FALL</h1>
-        <p class="tip">WASD: move • Space: interact • ESC: menu</p>
+        <p class="tip">WASD: move • Space: attack • ESC: menu</p>
       </div>
     </div>
 
@@ -44,11 +49,11 @@ ESC — Pause / Menu</pre>
     <div id="game-container" class="hidden"></div>
   </div>
 
-  <!-- ✅ Modern Three.js import via ES modules -->
+  <!-- ✅ Correct Three.js ES module imports -->
   <script type="module">
-    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.module.js';
-    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.159.0/examples/jsm/controls/OrbitControls.js';
-    import './js/main_module.js';
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.module.js";
+    import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.159.0/examples/jsm/controls/OrbitControls.js";
+    import "./js/main_module.js";
   </script>
 </body>
 </html>
