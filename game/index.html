@@ -3,28 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SHADOW FALL</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <title>Shadowfall — Game</title>
   <link rel="stylesheet" href="css/styles.css" />
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background: url("css/title_background.png") center center / cover no-repeat fixed;
-    }
-  </style>
 </head>
 <body>
   <div id="root">
+    <canvas id="bgCanvas"></canvas>
+
     <div id="introText" class="fade hidden">
-      <div class="intro-line">In the realm of Shadow Fall, darkness stirs again…</div>
+      <div class="intro-line">In the realm of Shadowfall, darkness stirs again…</div>
     </div>
 
     <div id="menu" class="overlay hidden">
       <div id="menu-inner">
-        <h1 id="title">SHADOW FALL</h1>
+        <h1 id="title">SHADOWFALL</h1>
         <div class="menu-buttons">
           <button id="startBtn">Start</button>
           <button id="optionsBtn">Options</button>
@@ -67,13 +59,11 @@ Q — Quest Log (v4)</pre>
     <div id="game-container" class="hidden"></div>
   </div>
 
-  <!-- ✅ Modern module load -->
-  <script type="module">
-    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.156.1/build/three.module.js";
-    import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.156.1/examples/jsm/controls/OrbitControls.js";
-    import "./js/main_module.js";
-    window.THREE = THREE;
-    window.OrbitControls = OrbitControls;
-  </script>
+  <!-- ✅ Load Three.js (global, non-module) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.156.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.156.1/examples/js/controls/OrbitControls.min.js"></script>
+
+  <!-- ✅ Main Game Script -->
+  <script src="js/main_module.js"></script>
 </body>
 </html>
