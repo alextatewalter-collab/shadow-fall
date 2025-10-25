@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SHADOWFALL</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -59,11 +60,13 @@ Q — Quest Log (v4)</pre>
     <div id="game-container" class="hidden"></div>
   </div>
 
-  <!-- ✅ Load Three.js globally -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.156.1/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.156.1/examples/js/controls/OrbitControls.min.js"></script>
-
-  <!-- ✅ Load your main game code -->
-  <script src="./js/main_module.js"></script>
+  <!-- ✅ Modern ES-module load: no deprecation warning -->
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.156.1/build/three.module.js";
+    import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.156.1/examples/jsm/controls/OrbitControls.js";
+    import "./js/main_module.js";
+    window.THREE = THREE;
+    window.OrbitControls = OrbitControls;
+  </script>
 </body>
 </html>
