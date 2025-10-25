@@ -19,13 +19,25 @@ html, body, #root {
   overflow: hidden;
 }
 
-canvas#bgCanvas {
+/* === Background Image === */
+#bgCanvas {
   position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
   display: block;
+  z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../assets/title_background.png") no-repeat center center / cover;
+  opacity: 0.32;
+  filter: brightness(0.9) contrast(1.1);
+  z-index: -1;
 }
 
 /* Fade-in Intro */
@@ -42,6 +54,7 @@ canvas#bgCanvas {
   text-shadow: 0 0 18px rgba(160, 200, 255, 0.25);
   font-size: 20px;
   letter-spacing: 1px;
+  z-index: 1;
 }
 
 #introText .intro-line {
@@ -86,21 +99,22 @@ canvas#bgCanvas {
 }
 
 #menu-inner {
-  background: linear-gradient(180deg, rgba(4, 4, 6, 0.6), rgba(4, 4, 6, 0.35));
+  background: rgba(8, 10, 12, 0.65);
   padding: 34px;
   border-radius: 12px;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
   text-align: center;
   pointer-events: auto;
+  z-index: 2;
 }
 
 #title {
-  font-size: 56px;
+  font-size: 64px;
   margin: 0;
   letter-spacing: 6px;
-  text-shadow: 0 6px 24px rgba(0, 70, 120, 0.09);
   color: var(--silver);
+  text-shadow: 0 0 32px rgba(150, 180, 255, 0.2);
 }
 
 .menu-buttons {
