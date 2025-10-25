@@ -1,31 +1,88 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Shadowfall — Play</title>
-<link rel="stylesheet" href="css/launcher.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shadowfall — Launcher</title>
+  <link rel="stylesheet" href="css/launcher.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at 50% 30%, #10161d 0%, #05070a 100%);
+      color: #e9e6e2;
+      overflow: hidden;
+    }
+    #wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    h1 {
+      font-size: 60px;
+      letter-spacing: 4px;
+      margin: 0;
+      color: #f0f4ff;
+      text-shadow: 0 0 24px rgba(0,120,255,0.15);
+    }
+    p {
+      font-size: 18px;
+      color: #aeb7c4;
+      margin-top: 6px;
+    }
+    .btn {
+      background: #0b0e12;
+      border: 1px solid #333;
+      color: #e9e6e2;
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .btn:hover {
+      box-shadow: 0 0 12px rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    #gameOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: black;
+      display: none;
+    }
+    #gameOverlay iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    #back {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 6px 12px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid #444;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-<div id="app">
-  <div id="bg"></div>
   <div id="wrap">
     <h1>SHADOWFALL</h1>
-    <p>Fog &amp; Steel</p>
-    <button id="install" class="btn">Install &amp; Play</button>
-    <div id="progress" class="hidden">
-      <div class="bar"></div>
-      <div class="status" id="status">Preparing…</div>
-    </div>
+    <p>Fog & Steel</p>
+    <button id="install" class="btn">Install & Play</button>
   </div>
 
-  <div id="gameOverlay" class="hidden">
+  <div id="gameOverlay">
     <iframe id="gameFrame" src="about:blank" allow="autoplay; fullscreen"></iframe>
-    <div id="overlayTop">
-      <button id="back">⟵ Back</button>
-    </div>
+    <button id="back">⟵ Back</button>
   </div>
-</div>
-<script type="module" src="js/launcher.js"></script>
+
+  <script type="module" src="js/launcher.js"></script>
 </body>
 </html>
