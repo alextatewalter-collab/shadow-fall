@@ -1,39 +1,148 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shadowfall — Game</title>
-  <link rel="icon" href="../favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
-  <div id="root">
-    <canvas id="bgCanvas"></canvas>
+/* === SHADOWFALL — PIXEL RPG STYLE === */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-    <div id="introText" class="fade hidden">
-      <div class="intro-line">In the realm of Shadowfall, darkness stirs again…</div>
-    </div>
+:root {
+  --bg: #0b0e12;
+  --panel: rgba(8, 8, 10, 0.85);
+  --text: #e9e6e2;
+  --accent: #b22a2a;
+  --silver: #dfe4ee;
+}
 
-    <div id="menu" class="overlay hidden">
-      <div id="menu-inner">
-        <h1 id="title">SHADOWFALL</h1>
-        <div class="menu-buttons">
-          <button id="startBtn">Start</button>
-          <button id="optionsBtn">Options</button>
-          <button id="exitBtn">Exit</button>
-        </div>
-      </div>
-    </div>
+/* Base + pixelation */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Press Start 2P', monospace;
+  overflow: hidden;
+}
 
-    <div id="game-ui" class="hidden">
-      <div id="controls">WASD Move — SPACE Attack — ESC Menu</div>
-    </div>
+canvas, img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
 
-    <div id="game-container" class="hidden"></div>
-  </div>
+/* === Animated pixel fire background === */
+canvas#bgCanvas {
+  position: fixed;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  display: block;
+  background: radial-gradient(circle at center, #1a1a1d 0%, #090909 90%);
+  animation: flicker 2s infinite;
+  filter: brightness(1.1);
+}
 
-  <!-- ✅ Only import main_module.js (it will import Three.js from CDN itself) -->
-  <script type="module" src="./js/main_module.js"></script>
-</body>
-</html>
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { filter: brightness(1); }
+  20%, 24%, 55% { filter: brightness(1.3); }
+}
+
+/* === Intro Text === */
+#introText {
+  position: fixed; left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  color: var(--silver);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+  font-size: 10px;
+  animation: fadein 3s ease-out forwards;
+}
+.fade.hidden { opacity: 0; }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+
+/* === Menu === */
+.overlay {
+  position: fixed;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+
+#menu-inner {
+  background: rgba(8, 8, 10, 0.85);
+  border: 2px solid #222;
+  padding: 32px;
+  border-radius: 4px;
+  pointer-events: auto;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(255, 100, 50, 0.15);
+  animation: glow 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(255, 60, 30, 0.1); }
+  to { box-shadow: 0 0 30px rgba(255, 140, 80, 0.3); }
+}
+
+#title {
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: var(--silver);
+  text-shadow: 0 0 10px rgba(255, 180, 140, 0.5);
+  margin-bottom: 14px;
+}
+
+.subtitle {
+  font-size: 8px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+  color: #a77;
+}
+
+/* === Buttons === */
+button {
+  background: var(--panel);
+  border: 2px solid var(--accent);
+  color: var(--silver);
+  font-family: 'Press Start 2P', monospace;
+  padding: 10px 14px;
+  font-size: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 8px;
+  transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+/* === Game UI === */
+#game-ui {
+  position: fixed;
+  left: 12px; right: 12px; bottom: 12px;
+  display: flex; justify-content: space-between;
+  pointer-events: none;
+}
+
+#controls {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 6px 8px;
+  border: 1px solid #444;
+  border-radius: 2px;
+  font-size: 8px;
+  opacity: 0.85;
+}
+
+/* === Quest Text === */
+#questText {
+  position: fixed; top: 20px; left: 0; right: 0;
+  text-align: center;
+  font-size: 10px;
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(255, 50, 50, 0.6);
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+#questText.show { opacity: 1; }
+
+/* === Hidden === */
+.hidden { display: none !important; }
