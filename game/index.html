@@ -33,11 +33,7 @@
     <div id="game-container" class="hidden"></div>
   </div>
 
-  <!-- ✅ FIX: load Three.js directly from CDN -->
-  <script type="module">
-    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
-    import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js";
-    import "./js/main_module.js";
-  </script>
+  <!-- ✅ Only import main_module.js (it will import Three.js from CDN itself) -->
+  <script type="module" src="./js/main_module.js"></script>
 </body>
 </html>
