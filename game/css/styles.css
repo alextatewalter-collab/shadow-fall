@@ -1,57 +1,39 @@
-:root {
-  --bg: #0b0e12;
-  --panel: rgba(6,6,8,0.85);
-  --text: #e9e6e2;
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shadowfall — Game</title>
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="root">
+    <canvas id="bgCanvas"></canvas>
 
-* { box-sizing: border-box; }
+    <div id="introText" class="fade hidden">
+      <div class="intro-line">In the realm of Shadowfall, darkness stirs again…</div>
+    </div>
 
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  background: var(--bg);
-  font-family: system-ui, monospace;
-  color: var(--text);
-  overflow: hidden;
-}
+    <div id="menu" class="overlay hidden">
+      <div id="menu-inner">
+        <h1 id="title">SHADOWFALL</h1>
+        <div class="menu-buttons">
+          <button id="startBtn">Start</button>
+          <button id="optionsBtn">Options</button>
+          <button id="exitBtn">Exit</button>
+        </div>
+      </div>
+    </div>
 
-canvas#bgCanvas {
-  position: fixed;
-  left: 0; top: 0;
-  width: 100vw; height: 100vh;
-}
+    <div id="game-ui" class="hidden">
+      <div id="controls">WASD Move — SPACE Attack — ESC Menu</div>
+    </div>
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    <div id="game-container" class="hidden"></div>
+  </div>
 
-.hidden { display: none !important; }
-
-#menu-inner {
-  background: rgba(20, 20, 25, 0.8);
-  padding: 30px;
-  border-radius: 12px;
-  text-align: center;
-}
-
-#title {
-  font-size: 60px;
-  letter-spacing: 5px;
-  text-shadow: 0 0 30px rgba(0,0,0,0.5);
-}
-
-button {
-  margin: 10px;
-  padding: 12px 20px;
-  background: #101214;
-  border: 1px solid #333;
-  color: var(--text);
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-button:hover { background: #181b1f; }
+  <!-- ✅ Only import main_module.js (it will import Three.js from CDN itself) -->
+  <script type="module" src="./js/main_module.js"></script>
+</body>
+</html>
