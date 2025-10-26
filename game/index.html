@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shadowfall — Game</title>
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="root">
+    <canvas id="bgCanvas"></canvas>
+
+    <div id="introText" class="fade hidden">
+      <div class="intro-line">In the realm of Shadowfall, darkness stirs again…</div>
+    </div>
+
+    <div id="menu" class="overlay hidden">
+      <div id="menu-inner">
+        <h1 id="title">SHADOWFALL</h1>
+        <div class="menu-buttons">
+          <button id="startBtn">Start</button>
+          <button id="optionsBtn">Options</button>
+          <button id="exitBtn">Exit</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="game-ui" class="hidden">
+      <div id="controls">WASD Move — SPACE Attack — ESC Menu</div>
+    </div>
+
+    <div id="game-container" class="hidden"></div>
+  </div>
+
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
+    import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js";
+    import "./js/main_module.js";
+  </script>
+</body>
+</html>
