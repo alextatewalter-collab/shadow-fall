@@ -1,5 +1,3 @@
-
-<script type="module" src="./js/main_module.js"></script>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,7 +15,8 @@
     <!-- 🕯️ Retro “Press Start” screen -->
     <div id="pressStartScreen">
       <h1 id="ps-title">SHADOWFALL</h1>
-      <p id="ps-sub">Fog & Steel</p>
+      <p id="ps-sub">Fog &amp; Steel</p>
+      <p class="ps-tip">Press ENTER to open the menu</p>
       <p id="press-start">Press ENTER to Begin</p>
     </div>
 
@@ -25,49 +24,36 @@
     <div id="menu" class="overlay hidden">
       <div id="menu-inner">
         <h1 id="title">SHADOWFALL</h1>
-        <p class="subtitle">Fog & Steel</p>
+        <p class="subtitle">Fog &amp; Steel</p>
+        <p class="menu-tip">Take a breath. The forest remembers.</p>
         <div class="menu-buttons">
           <button id="startBtn">Start</button>
           <button id="optionsBtn">Options</button>
           <button id="exitBtn">Exit</button>
         </div>
+        <p class="menu-hint">Goal: Collect the glowing shards and rekindle the campfire.</p>
       </div>
     </div>
 
     <!-- 🕹️ Game UI -->
     <div id="game-ui" class="hidden">
-      <div id="controls">WASD Move — SPACE Attack — ESC Menu</div>
+      <div id="controls">WASD Move — SHIFT Sprint — SPACE Focus — ESC Menu</div>
+      <div id="hud">
+        <div id="hud-left" class="hud-column">
+          <div id="health" class="hud-panel"></div>
+          <div id="statusEffect" class="hud-panel">Status: Fog Chill</div>
+        </div>
+        <div id="hud-right" class="hud-column">
+          <div id="shards" class="hud-panel">Shards: <span id="shardCount">0 / 0</span></div>
+          <div id="coordinates" class="hud-panel">X 0 · Z 0</div>
+        </div>
+      </div>
     </div>
 
-    <div id="game-container" class="hidden"></div>
+    <div id="questText">Collect the astral shards hidden in the mist.</div>
   </div>
 
   <!-- ✅ Main module -->
   <script type="module" src="./js/main_module.js"></script>
-
-  <!-- 🎬 Press Start screen logic -->
-  <script>
-    const ps = document.getElementById("pressStartScreen");
-    const menu = document.getElementById("menu");
-    const pressTxt = document.getElementById("press-start");
-
-    let blink = true;
-    setInterval(() => {
-      pressTxt.style.opacity = blink ? 0.2 : 1;
-      blink = !blink;
-    }, 600);
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        ps.classList.add("hidden");
-        menu.classList.remove("hidden");
-      }
-    });
-  </script>
 </body>
 </html>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="
