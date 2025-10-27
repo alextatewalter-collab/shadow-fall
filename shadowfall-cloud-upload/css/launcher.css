@@ -1,0 +1,185 @@
+:root {
+  --bg: #05070b;
+  --panel: rgba(8, 10, 16, 0.82);
+  --panel-border: rgba(194, 211, 255, 0.35);
+  --text: #e8ebf0;
+  --accent: #c2d1ff;
+  --accent-strong: #86a5ff;
+  --shadow: rgba(30, 40, 80, 0.6);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  font-family: 'Press Start 2P', monospace;
+  color: var(--text);
+  overflow: hidden;
+  letter-spacing: 1px;
+}
+
+#bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(70, 90, 150, 0.12) 0%, rgba(0, 0, 0, 0) 45%),
+    radial-gradient(circle at 70% 70%, rgba(86, 165, 255, 0.16) 0%, rgba(0, 0, 0, 0) 55%),
+    radial-gradient(circle at center, #101820 0%, #050608 100%);
+  filter: saturate(110%);
+  z-index: 0;
+}
+
+#wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 24px;
+  gap: 18px;
+}
+
+h1 {
+  font-size: clamp(42px, 5vw, 68px);
+  letter-spacing: 6px;
+  margin: 0;
+  color: var(--accent);
+  text-shadow: 0 0 22px rgba(134, 165, 255, 0.55);
+}
+
+.tagline {
+  font-size: 14px;
+  color: rgba(232, 235, 240, 0.85);
+}
+
+.hook {
+  font-size: 11px;
+  color: rgba(194, 211, 255, 0.7);
+  max-width: 420px;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  background: var(--panel);
+  border: 2px solid var(--panel-border);
+  color: var(--text);
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  min-width: 240px;
+  box-shadow: 0 8px 24px var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.2s ease;
+}
+
+.btn.primary {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(134, 165, 255, 0.45);
+  border-color: var(--accent-strong);
+  outline: none;
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(134, 165, 255, 0.3);
+}
+
+.tip {
+  font-size: 9px;
+  color: rgba(194, 211, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#progress {
+  margin-top: 12px;
+  padding: 16px 20px;
+  border: 2px solid rgba(134, 165, 255, 0.35);
+  border-radius: 8px;
+  background: rgba(2, 4, 8, 0.8);
+  box-shadow: 0 12px 32px rgba(12, 18, 28, 0.6);
+}
+
+.bar {
+  width: min(320px, 70vw);
+  height: 10px;
+  background: rgba(22, 30, 44, 0.9);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.bar::before {
+  content: "";
+  display: block;
+  width: 32%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(134, 165, 255, 0.5), rgba(134, 165, 255, 0.9));
+  animation: load 2.4s infinite ease-in-out;
+}
+
+@keyframes load {
+  0% { width: 6%; opacity: 0.35; }
+  45% { width: 86%; opacity: 1; }
+  100% { width: 6%; opacity: 0.35; }
+}
+
+.status {
+  font-size: 10px;
+  color: rgba(194, 211, 255, 0.82);
+}
+
+.hidden { display: none !important; }
+
+iframe {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#overlayTop {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 100;
+}
+
+#overlayTop button {
+  padding: 10px 16px;
+  font-size: 11px;
+  font-family: 'Press Start 2P', monospace;
+  border: 2px solid rgba(194, 211, 255, 0.4);
+  background: rgba(5, 7, 11, 0.85);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+}
+
+#overlayTop button:hover,
+#overlayTop button:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
