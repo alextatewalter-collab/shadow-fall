@@ -1,0 +1,228 @@
+diff --git a/game/css/styles.css b/shadowfall-cloud-upload/game/css/styles.css
+similarity index 75%
+rename from game/css/styles.css
+rename to shadowfall-cloud-upload/game/css/styles.css
+index c13751ba03bca8ad0e34c11597a0d17ae227f08a..e1ca9a451a7faf73188c1e3fc4fb24f10a47fb54 100644
+--- a/game/css/styles.css
++++ b/shadowfall-cloud-upload/game/css/styles.css
+@@ -38,142 +38,217 @@ canvas, img {
+   20%, 24%, 55% { filter: brightness(1.25); }
+ }
+ 
+ /* === Press Start screen === */
+ #pressStartScreen {
+   position: fixed;
+   left: 0; top: 0;
+   width: 100vw; height: 100vh;
+   background: repeating-linear-gradient(
+     to bottom,
+     #0a0d0e 0px,
+     #0d1316 3px,
+     #0a0d0e 6px
+   );
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   color: var(--silver);
+   text-align: center;
+   text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+   z-index: 20;
+   animation: fadein 3s ease-out forwards;
+ }
+ 
++@keyframes fadein {
++  from { opacity: 0; }
++  to { opacity: 1; }
++}
++
++#pressStartScreen .ps-tip {
++  font-size: 7px;
++  letter-spacing: 1px;
++  opacity: 0.75;
++  margin-bottom: 10px;
++  color: rgba(220, 200, 200, 0.85);
++}
++
+ #ps-title {
+   font-size: 24px;
+   letter-spacing: 3px;
+   color: #eaeaea;
+   text-shadow: 0 0 10px rgba(255, 180, 100, 0.6);
+   margin-bottom: 8px;
+ }
+ 
+ #ps-sub {
+   font-size: 8px;
+   opacity: 0.8;
+   margin-bottom: 50px;
+   color: #a77;
+ }
+ 
+ #press-start {
+   font-size: 8px;
+   margin-top: 12px;
+   color: #d4d4d4;
+   animation: blink 1s infinite;
+ }
+ 
+ @keyframes blink {
+   0%, 50% { opacity: 1; }
+   51%, 100% { opacity: 0.2; }
+ }
+ 
+ /* === Menu === */
+ .overlay {
+   position: fixed;
+   left: 0; top: 0;
+   width: 100vw; height: 100vh;
+   display: flex; align-items: center; justify-content: center;
+   pointer-events: none;
+ }
+ 
+ #menu-inner {
+   background: rgba(8, 8, 10, 0.85);
+   border: 2px solid #222;
+-  padding: 32px;
++  padding: 32px 36px;
+   border-radius: 4px;
+   pointer-events: auto;
+   text-align: center;
+   box-shadow: 0 0 30px rgba(255, 100, 50, 0.15);
+   animation: glow 2.5s infinite alternate ease-in-out;
+ }
+ 
++#menu-inner .menu-tip {
++  font-size: 9px;
++  color: rgba(230, 220, 220, 0.85);
++  margin-bottom: 16px;
++}
++
++#menu-inner .menu-hint {
++  font-size: 7px;
++  margin-top: 18px;
++  color: rgba(255, 190, 150, 0.75);
++}
++
+ @keyframes glow {
+   from { box-shadow: 0 0 10px rgba(255, 60, 30, 0.1); }
+   to { box-shadow: 0 0 30px rgba(255, 140, 80, 0.3); }
+ }
+ 
+ #title {
+   font-size: 20px;
+   letter-spacing: 3px;
+   color: var(--silver);
+   text-shadow: 0 0 10px rgba(255, 180, 140, 0.5);
+   margin-bottom: 14px;
+ }
+ 
+ .subtitle {
+   font-size: 8px;
+   opacity: 0.8;
+   margin-bottom: 20px;
+   color: #a77;
+ }
+ 
+ /* === Buttons === */
+ button {
+   background: var(--panel);
+   border: 2px solid var(--accent);
+   color: var(--silver);
+   font-family: 'Press Start 2P', monospace;
+   padding: 10px 14px;
+   font-size: 10px;
+   border-radius: 2px;
+   cursor: pointer;
+   margin: 8px;
+   transition: all 0.1s ease-in-out;
+ }
+ button:hover {
+   background: var(--accent);
+   color: #fff;
+   transform: scale(1.05);
+   box-shadow: 0 0 8px var(--accent);
+ }
+ 
+ /* === Game UI === */
+ #game-ui {
+   position: fixed;
+-  left: 12px; right: 12px; bottom: 12px;
+-  display: flex; justify-content: space-between;
++  left: 12px;
++  right: 12px;
++  bottom: 12px;
++  display: flex;
++  flex-direction: column;
++  gap: 12px;
+   pointer-events: none;
+ }
++
+ #controls {
++  align-self: center;
+   background: rgba(0, 0, 0, 0.4);
+   padding: 6px 8px;
+   border: 1px solid #444;
+   border-radius: 2px;
+   font-size: 8px;
+   opacity: 0.85;
++  letter-spacing: 1px;
++}
++
++#hud {
++  display: flex;
++  justify-content: space-between;
++  width: 100%;
++  gap: 12px;
++}
++
++.hud-column {
++  display: flex;
++  flex-direction: column;
++  gap: 6px;
++}
++
++.hud-panel {
++  background: rgba(0, 0, 0, 0.5);
++  padding: 6px 8px;
++  border: 1px solid rgba(90, 90, 120, 0.6);
++  border-radius: 3px;
++  font-size: 8px;
++  letter-spacing: 1px;
++  opacity: 0.9;
++  min-width: 130px;
++}
++
++#statusEffect {
++  color: #7bd5ff;
++}
++
++#shards {
++  color: #ffe27a;
++}
++
++.heart {
++  color: #ff6b6b;
++  margin-right: 4px;
++  text-shadow: 0 0 6px rgba(255, 80, 80, 0.7);
++}
++
++.heart.empty {
++  color: rgba(100, 40, 40, 0.7);
++  text-shadow: none;
+ }
+ 
+ /* === Quest Text === */
+ #questText {
+   position: fixed; top: 20px; left: 0; right: 0;
+   text-align: center;
+   font-size: 10px;
+   color: var(--accent);
+   text-shadow: 0 0 8px rgba(255, 50, 50, 0.6);
+   opacity: 0;
+   transition: opacity 0.4s ease-in-out;
+ }
+ #questText.show { opacity: 1; }
+ 
+ /* === Hidden === */
+ .hidden { display: none !important; }
