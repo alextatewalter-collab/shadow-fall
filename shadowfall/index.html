@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shadowfall — Launcher</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="css/launcher.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="bg"></div>
+    <div id="wrap">
+      <h1>SHADOWFALL</h1>
+      <p class="tagline">Fog &amp; Steel</p>
+      <p class="hook">A pixel-forest RPG experiment.</p>
+      <div class="cta">
+        <button id="install" class="btn primary">Install &amp; Play</button>
+        <button id="resume" class="btn hidden">Resume Adventure</button>
+      </div>
+      <div class="tip">Press ENTER to start instantly.</div>
+      <div id="progress" class="hidden">
+        <div class="bar"></div>
+        <div class="status" id="status">Preparing…</div>
+      </div>
+    </div>
+
+    <div id="gameOverlay" class="hidden">
+      <iframe id="gameFrame" src="about:blank" allow="autoplay; fullscreen"></iframe>
+      <div id="overlayTop">
+        <button id="back">⟵ Leave Camp</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/launcher.js"></script>
+</body>
+</html>
